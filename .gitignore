@@ -1,0 +1,27 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+[Bb]in/
+[Oo]bj/
+
+# NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+
+# Misc
+*.log
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
