@@ -1,0 +1,53 @@
+'use client';
+
+import Link from 'next/link';
+import { useAuthStore } from '@/presentation/stores/authStore';
+import { useAuth } from '@/presentation/hooks/useAuth';
+
+export function Header() {
+  const { isAuthenticated, user } = useAuthStore();
+  const { logout } = useAuth();
+
+  return (
+    <header className="bg-white shadow-sm border-b">
+      <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+        <Link href="/" className="text-xl font-bold text-blue-600">
+          Blog
+        </Link>
+
+        <nav className="flex items-center gap-4">
+          <Link href="/posts" className="text-gray-600 hover:text-gray-900">
+            Postagens
+          </Link>
+
+          {isAuthenticated ? (
+            <>
+              <Link href="/my-posts" className="text-gray-600 hover:text-gray-900">
+                Minhas Postagens
+              </Link>
+              <Link href="/posts/new" className="text-gray-600 hover:text-gray-900">
+                Nova Postagem
+              </Link>
+              <span className="text-sm text-gray-500">{user?.nome}</span>
+              <button
+                onClick={logout}
+                className="text-sm text-red-600 hover:text-red-800"
+              >
+                Sair
+              </button>
+            </>
+          ) : (
+            <>
+              <Link href="/login" className="text-gray-600 hover:text-gray-900">
+                Login
+              </Link>
+              <Link href="/register" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                Registrar
+              </Link>
+            </>
+          )}
+        </nav>
+      </div>
+    </header>
+  );
+}
