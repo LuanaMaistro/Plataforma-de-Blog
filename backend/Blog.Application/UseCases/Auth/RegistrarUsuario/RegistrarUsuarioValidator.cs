@@ -17,6 +17,8 @@ public class RegistrarUsuarioValidator : AbstractValidator<RegistrarUsuarioComma
 
         RuleFor(x => x.Senha)
             .NotEmpty().WithMessage("Senha e obrigatoria")
-            .MinimumLength(6).WithMessage("Senha deve ter pelo menos 6 caracteres");
+            .MinimumLength(6).WithMessage("Senha deve ter pelo menos 6 caracteres")
+            .Matches("[A-Z]").WithMessage("Senha deve conter pelo menos uma letra maiuscula")
+            .Matches("[0-9]").WithMessage("Senha deve conter pelo menos um numero");
     }
 }

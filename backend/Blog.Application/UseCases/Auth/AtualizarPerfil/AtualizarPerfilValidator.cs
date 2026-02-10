@@ -16,7 +16,9 @@ public class AtualizarPerfilValidator : AbstractValidator<AtualizarPerfilCommand
                 .NotEmpty().WithMessage("Senha atual e obrigatoria para alterar a senha");
 
             RuleFor(x => x.NovaSenha)
-                .MinimumLength(6).WithMessage("Nova senha deve ter pelo menos 6 caracteres");
+                .MinimumLength(6).WithMessage("Nova senha deve ter pelo menos 6 caracteres")
+                .Matches("[A-Z]").WithMessage("Nova senha deve conter pelo menos uma letra maiuscula")
+                .Matches("[0-9]").WithMessage("Nova senha deve conter pelo menos um numero");
         });
     }
 }

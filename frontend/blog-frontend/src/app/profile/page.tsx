@@ -44,6 +44,16 @@ export default function ProfilePage() {
       return;
     }
 
+    if (novaSenha && !/[A-Z]/.test(novaSenha)) {
+      setError('Nova senha deve conter pelo menos uma letra maiúscula');
+      return;
+    }
+
+    if (novaSenha && !/[0-9]/.test(novaSenha)) {
+      setError('Nova senha deve conter pelo menos um número');
+      return;
+    }
+
     setLoading(true);
     try {
       const repository = new AuthRepository();
@@ -96,7 +106,6 @@ export default function ProfilePage() {
           />
 
           <hr className="my-2" />
-          <p className="text-sm text-gray-500">Deixe em branco para manter a senha atual.</p>
 
           <Input
             label="Senha atual"
@@ -115,7 +124,7 @@ export default function ProfilePage() {
           />
 
           <Button type="submit" loading={loading}>
-            Salvar Alteracoes
+            Salvar Alterações
           </Button>
         </form>
       </div>
