@@ -11,7 +11,7 @@ export default function LoginPage() {
         <LoginForm />
         <p className="mt-4 text-center text-sm text-gray-600">
           Não tem conta?{' '}
-          <Link href="/register" className="text-blue-600 hover:underline">
+          <Link href="/register" className="text-primary hover:underline">
             Registre-se
           </Link>
         </p>

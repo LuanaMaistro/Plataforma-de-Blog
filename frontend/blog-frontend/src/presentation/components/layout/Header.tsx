@@ -11,7 +11,7 @@ export function Header() {
   return (
     <header className="bg-white shadow-sm border-b">
       <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold text-blue-600">
+        <Link href="/" className="text-xl font-bold text-primary">
           Blog
         </Link>
 
@@ -41,7 +41,7 @@ export function Header() {
               <Link href="/login" className="text-gray-600 hover:text-gray-900">
                 Login
               </Link>
-              <Link href="/register" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+              <Link href="/register" className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark">
                 Registrar
               </Link>
             </>

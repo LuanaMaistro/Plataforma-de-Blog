@@ -22,6 +22,15 @@ api.interceptors.response.use(
         window.location.href = '/login';
       }
     }
+
+    const data = error.response?.data;
+    if (data) {
+      const message = data.errors?.length
+        ? data.errors.join('. ')
+        : data.message || error.message;
+      return Promise.reject(new Error(message));
+    }
+
     return Promise.reject(error);
   }
 );

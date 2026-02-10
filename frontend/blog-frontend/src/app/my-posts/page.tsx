@@ -27,7 +27,7 @@ export default function MyPostsPage() {
         <h1 className="text-2xl font-bold text-gray-900">Minhas Postagens</h1>
         <Link
           href="/posts/new"
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors"
         >
           Nova Postagem
         </Link>

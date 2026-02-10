@@ -23,7 +23,7 @@ export function PostCard({ post, showActions, onDelete }: PostCardProps) {
   return (
     <div className="bg-white border rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
       <Link href={`/posts/${post.id}`}>
-        <h2 className="text-xl font-semibold text-gray-900 hover:text-blue-600 mb-2">
+        <h2 className="text-xl font-semibold text-gray-900 hover:text-primary mb-2">
           {post.titulo}
         </h2>
       </Link>
@@ -34,7 +34,7 @@ export function PostCard({ post, showActions, onDelete }: PostCardProps) {
           <div className="flex gap-2">
             <Link
               href={`/posts/edit/${post.id}`}
-              className="text-blue-600 hover:text-blue-800"
+              className="text-primary hover:text-primary-dark"
             >
               Editar
             </Link>
