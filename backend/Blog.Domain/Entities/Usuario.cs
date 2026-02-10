@@ -30,6 +30,11 @@ public class Usuario
         Nome = nome;
     }
 
+    public void AtualizarSenha(SenhaHash novaSenha)
+    {
+        Senha = novaSenha;
+    }
+
     private static void ValidarNome(string nome)
     {
         if (string.IsNullOrWhiteSpace(nome))

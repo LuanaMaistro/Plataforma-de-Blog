@@ -28,7 +28,9 @@ export function Header() {
               <Link href="/posts/new" className="text-gray-600 hover:text-gray-900">
                 Nova Postagem
               </Link>
-              <span className="text-sm text-gray-500">{user?.nome}</span>
+              <Link href="/profile" className="text-sm text-primary hover:text-primary-dark font-medium">
+                {user?.nome}
+              </Link>
               <button
                 onClick={logout}
                 className="text-sm text-red-600 hover:text-red-800"

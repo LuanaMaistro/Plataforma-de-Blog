@@ -1,5 +1,5 @@
 import { IAuthRepository } from '@/domain/interfaces/IAuthRepository';
-import { UsuarioAutenticado } from '@/domain/entities/Usuario';
+import { Usuario, UsuarioAutenticado } from '@/domain/entities/Usuario';
 import { api } from '../http/axiosClient';
 
 export class AuthRepository implements IAuthRepository {
@@ -10,5 +10,10 @@ export class AuthRepository implements IAuthRepository {
 
   async register(nome: string, email: string, senha: string): Promise<void> {
     await api.post('/auth/register', { nome, email, senha });
+  }
+
+  async atualizarPerfil(nome: string, senhaAtual?: string, novaSenha?: string): Promise<Usuario> {
+    const response = await api.put('/auth/profile', { nome, senhaAtual, novaSenha });
+    return response.data;
   }
 }
