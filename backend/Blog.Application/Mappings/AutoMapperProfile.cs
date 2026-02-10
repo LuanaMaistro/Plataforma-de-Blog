@@ -15,7 +15,8 @@ public class AutoMapperProfile : Profile
 
         // Postagem
         CreateMap<Postagem, PostagemResponseDto>()
-            .ForMember(dest => dest.Autor, opt => opt.MapFrom(src =>
-                new AutorDto(src.Usuario.Id, src.Usuario.Nome)));
+            .ForMember(dest => dest.Autor, opt => opt.MapFrom(src => src.Usuario));
+
+        CreateMap<Usuario, AutorDto>();
     }
 }

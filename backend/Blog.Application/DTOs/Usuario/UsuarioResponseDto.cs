@@ -1,8 +1,9 @@
 namespace Blog.Application.DTOs.Usuario;
 
-public record UsuarioResponseDto(
-    int Id,
-    string Nome,
-    string Email,
-    DateTime DataCriacao
-);
+public class UsuarioResponseDto
+{
+    public int Id { get; set; }
+    public string Nome { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public DateTime DataCriacao { get; set; }
+}

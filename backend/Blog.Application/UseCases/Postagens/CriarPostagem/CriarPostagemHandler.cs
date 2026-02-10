@@ -31,13 +31,14 @@ public class CriarPostagemHandler : IRequestHandler<CriarPostagemCommand, Postag
 
         var usuario = await _usuarioRepository.ObterPorIdAsync(request.UsuarioId);
 
-        return new PostagemResponseDto(
-            postagem.Id,
-            postagem.Titulo,
-            postagem.Conteudo,
-            postagem.DataCriacao,
-            postagem.DataAtualizacao,
-            new AutorDto(usuario!.Id, usuario.Nome)
-        );
+        return new PostagemResponseDto
+        {
+            Id = postagem.Id,
+            Titulo = postagem.Titulo,
+            Conteudo = postagem.Conteudo,
+            DataCriacao = postagem.DataCriacao,
+            DataAtualizacao = postagem.DataAtualizacao,
+            Autor = new AutorDto { Id = usuario!.Id, Nome = usuario.Nome }
+        };
     }
 }
