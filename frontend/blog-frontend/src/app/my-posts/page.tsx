@@ -1,21 +1,25 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePosts } from '@/presentation/hooks/usePosts';
 import { PostCard } from '@/presentation/components/ui/PostCard';
 import { Loading } from '@/presentation/components/ui/Loading';
 import { ErrorMessage } from '@/presentation/components/ui/ErrorMessage';
+import { ConfirmModal } from '@/presentation/components/ui/ConfirmModal';
 
 export default function MyPostsPage() {
   const { posts, loading, error, deletePost } = usePosts(true);
+  const [deleteId, setDeleteId] = useState<number | null>(null);
 
-  const handleDelete = async (id: number) => {
-    if (!confirm('Tem certeza que deseja excluir esta postagem?')) return;
+  const handleDelete = async () => {
+    if (deleteId === null) return;
     try {
-      await deletePost(id);
+      await deletePost(deleteId);
     } catch {
       alert('Erro ao excluir postagem');
     }
+    setDeleteId(null);
   };
 
   if (loading) return <Loading />;
@@ -43,10 +47,22 @@ export default function MyPostsPage() {
               key={post.id}
               post={post}
               showActions
-              onDelete={handleDelete}
+              onDelete={(id) => setDeleteId(id)}
             />
           ))}
         </div>
+      )}
+
+      {deleteId !== null && (
+        <ConfirmModal
+          title="Excluir postagem"
+          message="Tem certeza que deseja excluir a postagem? Esta ação não pode ser desfeita."
+          confirmLabel="Excluir"
+          cancelLabel="Cancelar"
+          variant="danger"
+          onConfirm={handleDelete}
+          onCancel={() => setDeleteId(null)}
+        />
       )}
     </div>
   );
