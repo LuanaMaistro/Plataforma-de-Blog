@@ -63,7 +63,7 @@ export function Header() {
           confirmLabel="Sair"
           cancelLabel="Cancelar"
           variant="danger"
-          onConfirm={logout}
+          onConfirm={() => { setShowLogoutModal(false); logout(); }}
           onCancel={() => setShowLogoutModal(false)}
         />
       )}
