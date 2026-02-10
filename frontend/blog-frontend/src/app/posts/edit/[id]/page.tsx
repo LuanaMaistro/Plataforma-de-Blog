@@ -16,6 +16,7 @@ export default function EditPostPage() {
   const [post, setPost] = useState<Postagem | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
   const repository = new PostRepository();
 
@@ -34,7 +35,8 @@ export default function EditPostPage() {
     const id = Number(params.id);
     const useCase = new UpdatePostUseCase(repository);
     await useCase.execute(id, { titulo, conteudo });
-    router.push('/my-posts');
+    setSuccess('Postagem atualizada com sucesso!');
+    setTimeout(() => router.push('/my-posts'), 1500);
   };
 
   if (loading) return <Loading />;
@@ -44,6 +46,11 @@ export default function EditPostPage() {
   return (
     <div className="max-w-3xl mx-auto">
       <h1 className="text-2xl font-bold text-gray-900 mb-6">Editar Postagem</h1>
+      {success && (
+        <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg mb-4">
+          {success}
+        </div>
+      )}
       <div className="bg-white p-6 rounded-lg shadow-sm border">
         <PostForm
           initialTitulo={post.titulo}
