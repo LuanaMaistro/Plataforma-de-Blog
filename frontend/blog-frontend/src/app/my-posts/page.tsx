@@ -4,6 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePosts } from '@/presentation/hooks/usePosts';
 import { PostCard } from '@/presentation/components/ui/PostCard';
+import { Timeline } from '@/presentation/components/ui/Timeline';
+import { TimelineItem } from '@/presentation/components/ui/TimelineItem';
 import { Loading } from '@/presentation/components/ui/Loading';
 import { ErrorMessage } from '@/presentation/components/ui/ErrorMessage';
 import { ConfirmModal } from '@/presentation/components/ui/ConfirmModal';
@@ -41,16 +43,17 @@ export default function MyPostsPage() {
           Você ainda não tem postagens.
         </p>
       ) : (
-        <div className="flex flex-col gap-4">
+        <Timeline>
           {posts.map((post) => (
-            <PostCard
-              key={post.id}
-              post={post}
-              showActions
-              onDelete={(id) => setDeleteId(id)}
-            />
+            <TimelineItem key={post.id} date={post.dataCriacao}>
+              <PostCard
+                post={post}
+                showActions
+                onDelete={(id) => setDeleteId(id)}
+              />
+            </TimelineItem>
           ))}
-        </div>
+        </Timeline>
       )}
 
       {deleteId !== null && (

@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { usePosts } from '@/presentation/hooks/usePosts';
 import { useAuthStore } from '@/presentation/stores/authStore';
 import { PostCard } from '@/presentation/components/ui/PostCard';
+import { Timeline } from '@/presentation/components/ui/Timeline';
+import { TimelineItem } from '@/presentation/components/ui/TimelineItem';
 import { Loading } from '@/presentation/components/ui/Loading';
 import { ErrorMessage } from '@/presentation/components/ui/ErrorMessage';
 import { ConfirmModal } from '@/presentation/components/ui/ConfirmModal';
@@ -32,16 +34,17 @@ export default function PostsPage() {
       {posts.length === 0 ? (
         <p className="text-gray-500 text-center py-12">Nenhuma postagem encontrada.</p>
       ) : (
-        <div className="flex flex-col gap-4">
+        <Timeline>
           {posts.map((post) => (
-            <PostCard
-              key={post.id}
-              post={post}
-              showActions={user?.id === post.autor.id}
-              onDelete={(id) => setDeleteId(id)}
-            />
+            <TimelineItem key={post.id} date={post.dataCriacao}>
+              <PostCard
+                post={post}
+                showActions={user?.id === post.autor.id}
+                onDelete={(id) => setDeleteId(id)}
+              />
+            </TimelineItem>
           ))}
-        </div>
+        </Timeline>
       )}
 
       {deleteId !== null && (
