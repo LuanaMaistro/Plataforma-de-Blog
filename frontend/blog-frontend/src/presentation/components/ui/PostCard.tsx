@@ -1,7 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import { Pencil, Trash2 } from 'lucide-react';
 import { Postagem } from '@/domain/entities/Postagem';
+import { Tooltip } from './Tooltip';
 
 interface PostCardProps {
   post: Postagem;
@@ -27,23 +29,27 @@ export function PostCard({ post, showActions, onDelete }: PostCardProps) {
           {post.titulo}
         </h2>
       </Link>
-      <p className="text-gray-600 mb-4">{resumo}</p>
+      <p className="text-gray-600 mb-4 whitespace-pre-wrap break-words">{resumo}</p>
       <div className="flex items-center justify-between text-sm text-gray-500">
         <span>Por {post.autor.nome} em {dataFormatada}</span>
         {showActions && (
-          <div className="flex gap-2">
-            <Link
-              href={`/posts/edit/${post.id}`}
-              className="text-primary hover:text-primary-dark"
-            >
-              Editar
-            </Link>
-            <button
-              onClick={() => onDelete?.(post.id)}
-              className="text-red-600 hover:text-red-800"
-            >
-              Excluir
-            </button>
+          <div className="flex gap-3">
+            <Tooltip label="Editar postagem">
+              <Link
+                href={`/posts/edit/${post.id}`}
+                className="text-primary hover:text-primary-dark transition-colors"
+              >
+                <Pencil size={18} />
+              </Link>
+            </Tooltip>
+            <Tooltip label="Excluir postagem">
+              <button
+                onClick={() => onDelete?.(post.id)}
+                className="text-red-600 hover:text-red-800 transition-colors cursor-pointer"
+              >
+                <Trash2 size={18} />
+              </button>
+            </Tooltip>
           </div>
         )}
       </div>
