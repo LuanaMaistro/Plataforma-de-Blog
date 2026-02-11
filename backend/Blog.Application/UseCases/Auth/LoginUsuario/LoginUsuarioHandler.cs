@@ -27,10 +27,10 @@ public class LoginUsuarioHandler : IRequestHandler<LoginUsuarioCommand, LoginRes
         var usuario = await _usuarioRepository.ObterPorEmailAsync(request.Email.ToLowerInvariant());
 
         if (usuario is null)
-            throw new BusinessRuleException("Email ou senha invalidos");
+            throw new BusinessRuleException("Email ou senha inválidos");
 
         if (!_passwordHasher.Verificar(request.Senha, usuario.Senha.Valor))
-            throw new BusinessRuleException("Email ou senha invalidos");
+            throw new BusinessRuleException("Email ou senha inválidos");
 
         var token = _tokenService.GerarToken(usuario);
 

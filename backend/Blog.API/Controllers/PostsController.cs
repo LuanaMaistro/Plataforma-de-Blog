@@ -59,7 +59,7 @@ public class PostsController : ControllerBase
         var result = await _mediator.Send(query);
 
         if (result is null)
-            return NotFound(new { message = "Postagem nao encontrada" });
+            return NotFound(new { message = "Postagem não encontrada" });
 
         return Ok(result);
     }
