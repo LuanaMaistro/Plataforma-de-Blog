@@ -44,7 +44,7 @@ export default function PostDetailPage() {
         <div className="text-sm text-gray-500 mb-8">
           Por {post.autor.nome} em {dataFormatada}
         </div>
-        <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+        <div className="text-gray-700 leading-relaxed whitespace-pre-wrap break-words overflow-hidden">
           {post.conteudo}
         </div>
       </article>
