@@ -177,3 +177,13 @@ Cobertura de testes:
 - Validacao client-side (Zod) e server-side (FluentValidation)
 - Tratamento global de erros (ExceptionMiddleware)
 - Interface responsiva com Tailwind CSS
+
+## Video
+
+
+https://github.com/user-attachments/assets/7c6e5a76-da55-40e0-85e5-2a1bfc077b4f
+
+
+
+
+
