@@ -20,7 +20,7 @@ public class Postagem
         Titulo = titulo;
         Conteudo = conteudo;
         UsuarioId = usuarioId;
-        DataCriacao = DateTime.UtcNow;
+        DataCriacao = ObterHoraBrasilia();
     }
 
     public void Atualizar(string titulo, string conteudo)
@@ -28,7 +28,13 @@ public class Postagem
         Validar(titulo, conteudo);
         Titulo = titulo;
         Conteudo = conteudo;
-        DataAtualizacao = DateTime.UtcNow;
+        DataAtualizacao = ObterHoraBrasilia();
+    }
+
+    private static DateTime ObterHoraBrasilia()
+    {
+        var fusoHorarioBrasilia = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time");
+        return TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, fusoHorarioBrasilia);
     }
 
     public bool PertenceAoUsuario(int usuarioId) => UsuarioId == usuarioId;
