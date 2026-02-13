@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col items-center justify-center py-20 text-center">
       <h1 className="text-4xl font-bold text-gray-900 mb-4">
-        Bem-vindo ao Blog
+        Bem-vindo ao Nexum Blog
       </h1>
       <p className="text-lg text-gray-600 mb-8 max-w-md">
         Uma plataforma para compartilhar ideias e conhecimento.
